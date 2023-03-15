@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLANA AirDrop</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="call.js"></script>
+</head>
+<body>
+
+    <div class="header">
+        <h1>SOLANA AIRDROP</h1>
+    </div>
+
+
+    <div class="id1">
+
+
+
+
+        <form >
+
+            <input type="text" id="inputText" name="inputText"  placeholder="Enter Solana Account Address">
+     
+            <button type="button" onclick="submitForm()">Submit</button>
+
+            <!-- <h1>Your Transaction Hash is : </h1> -->
+            <!-- <p id="HashId"></p> -->
+            
+
+        </form>
+        
+        
+    </div>
+    
+    <div class="airdrop">
+        <h3>AirDrop 1 SOL to Devnet</h3>
+    </div>
+
+    <script src="https://unpkg.com/@solana/web3.js@latest/lib/index.iife.min.js"></script>
+    <script>
+        const { Connection, PublicKey} = solanaWeb3;
+    </script>
+    <script>
+    function submitForm()
+        {
+            //EgaEfYhkq5ndXg37RwU5YzMSd4oJXVQHswJrHFTzFrgm my wallet hash
+        
+        
+            var solanaPublicKey = document.getElementById("inputText").value;
+        
+            const connection = new Connection("https://api.devnet.solana.com");
+        
+            let publicKeyObject = new PublicKey(solanaPublicKey);
+
+            const fn = (async () => {
+                // 1e9 lamports = 10^9 lamports = 1 SOL
+                let txhash = await connection.requestAirdrop(publicKeyObject, 1e9);
+                console.log(`txhash: ${txhash}`);
+                })();
+            
+        
+            const inputText = document.getElementById("inputText").value;
+            alert("You Entered : " + inputText);
+
+
+            // document.getElementById("HashId").innerHTML = {txhash};
+
+
+        }
+    </script>
+ 
+</body>
+</html>
