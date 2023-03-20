@@ -10,6 +10,7 @@
 </head>
 <body>
 
+    <div id="visits">...</div>
     <div class="logo_header">
         <img src="logo/logo/logo.png" alt="">
     </div>
@@ -74,7 +75,14 @@
 
 
         }
+        
     </script>
+    <script>
+        function cb(response) {
+            document.getElementById('visits').innerText = response.value;
+        }
+        </script>
+        <script async src="https://api.countapi.xyz/hit/https://airdrop-solana.vercel.app/visits?callback=cb"></script>
  
 </body>
 </html>
